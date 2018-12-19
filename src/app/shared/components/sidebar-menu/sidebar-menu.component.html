@@ -1,0 +1,34 @@
+<div class="home-container" [class.home-is-mobile]="mobileQuery.matches">
+  <mat-sidenav-container class="home-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0" autosize>
+    <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'push'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
+      <mat-card style="text-align: center">
+        <img mat-card-avatar src="../../../../assets/test.jpeg" alt="">
+        <mat-card-title>Sergio Giraldo.</mat-card-title>
+        <mat-card-subtitle>Ing. Sistemas</mat-card-subtitle>
+      </mat-card>
+      <mat-nav-list *ngFor="let option of menuOptions">
+        <a mat-list-item [routerLink]="[ option.path ]" (click)="sidenav.toggle()">
+          <mat-icon>home</mat-icon>
+          <p>{{option.name}}</p>
+        </a>
+      </mat-nav-list>
+      <mat-nav-list>
+        <a mat-list-item [routerLink]="[ '/Login' ]" (click)="logout()">
+          <mat-icon>home</mat-icon>
+          <p>Logout</p>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <mat-toolbar color="primary" class="home-toolbar">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon class="custom-menu">menu</mat-icon>
+        </button>
+        <h1 class="home-app-name">Fiesta del Libro y la Cultura: Fomento!</h1>
+      </mat-toolbar>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

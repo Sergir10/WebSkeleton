@@ -1,0 +1,93 @@
+//Always import this for material comunication
+@import '~@angular/material/theming';
+//this import the custom colors map palette
+@import './palette.scss';
+//This include indicate to the material that we only load one scss file. is mandatory use it!
+@include mat-core();
+
+// Define a mixin that accepts a theme and outputs the theme-specific styles.
+@mixin fomento-app-theme($theme) {
+  // Extract the palettes you need from the theme definition.
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $color-text: white;
+
+  // Define any styles affected by the theme.
+  .mat-button-toggle-group {
+    border-radius: 0px !important;
+    border-top-left-radius: 4px !important;
+    border-top-right-radius: 4px !important;
+    border-color: mat-color($primary);
+    border-bottom: 0px;
+  }
+
+  .mat-button-toggle {
+    border-color: mat-color($primary) !important;
+  }
+
+  .mat-button-toggle-checked {
+    background-color: mat-color($primary);
+    color: $color-text !important;
+  }
+
+  .mat-raised-button, .mat-fab {
+    color: $color-text !important;
+  }
+
+  .mat-toolbar {
+    color: $color-text !important;
+  }
+
+  .mat-step-header {
+    .mat-step-icon {
+      font-size: x-large;
+      width: 50px;
+      height: 50px;
+      color: $color-text;
+    }
+  }
+
+  .mat-stepper-vertical-line::before {
+    top: 50px !important;
+    border-left-color: mat-color($accent) !important;
+  }
+
+  .mat-horizontal-stepper-header::before,
+  .mat-horizontal-stepper-header::after,
+  .mat-stepper-horizontal-line {
+    top: 50px !important;
+    width: 10px !important;
+    border-top-color: mat-color($accent) !important;
+  }
+
+  .mat-horizontal-stepper-header{
+    pointer-events: none !important;
+  }
+
+  .mat-divider {
+    background-color: mat-color($primary) !important;
+  }
+
+}
+
+//Here we define the colors of our custom theme
+//notice we are calling the colors from the _palette.scss file
+$fomento-app-primary: mat-palette($fomento-primary);
+//$fomento-app-secundary:  mat-palette($fomento-accent, A200, A100, A400);
+$fomento-app-accent:  mat-palette($fomento-accent);
+// The warn palette is optional (defaults to red).
+$fomento-app-warn: mat-palette($mat-red);
+$fomento-app-foreground: mat-palette($fomento-foreground);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$fomento-app-theme: mat-light-theme(
+    $fomento-app-primary,
+    $fomento-app-accent,
+    $fomento-app-warn
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($fomento-app-theme);
+@include fomento-app-theme($fomento-app-theme)
