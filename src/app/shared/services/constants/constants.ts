@@ -2,9 +2,6 @@ const ROUTING = {
   LOGIN: 'login',
   SIGNUP: 'signup',
   HOME: 'home',
-  PROFILE: 'profile',
-  WORKSHOPS_OFFER: 'workshopsOffer',
-  MY_WORKSHOPS: 'myworkshops'
 };
 
 const HTTP_STATUS: any = {
@@ -19,14 +16,10 @@ const HTTP_STATUS: any = {
 };
 
 const ENVIRONMENT = {
-  development : 'http://localhost:8080',
+  development: 'http://localhost:8080',
   QA: '',
   production: 'https://ep-api.fiestadellibroylacultura.com',
   imageBaseUrl: 'https://ep-multimedia.fiestadellibroylacultura.com/'
-};
-
-const MESSAGE: any = {
-  LOGIN_INCORRECT: 'Usuario o contraseña incorrectos. ¿Recibiste el email de aceptación?'
 };
 
 const LOCAL_STORAGE: any = {
@@ -37,6 +30,5 @@ export {
   ROUTING,
   HTTP_STATUS,
   ENVIRONMENT,
-  MESSAGE,
   LOCAL_STORAGE
 };

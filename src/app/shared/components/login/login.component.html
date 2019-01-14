@@ -10,18 +10,20 @@
               <mat-label>Correo electrónico</mat-label>
               <input matInput placeholder="Ingrese su email" formControlName="email" required>
               <mat-error class="error" *ngIf="loginForm.get('email').touched && loginForm.get('email').hasError('email')">
-            Correo electronico invalido.
-          </mat-error>
+                Correo electronico invalido.
+              </mat-error>
             </mat-form-field>
             <mat-form-field>
               <mat-label>Contraseña</mat-label>
-              <input matInput placeholder="Ingrese su contraseña" [type]="!hide ? 'password' : 'text'"  formControlName="password" required>
+              <input matInput placeholder="Ingrese su contraseña" [type]="!hide ? 'password' : 'text'" formControlName="password"
+                required>
               <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
               <mat-error class="error" *ngIf="loginForm.get('password').touched && loginForm.get('password').hasError('minlength')">
-                  La contraseña debe tener al menos 8 caracteres
-                </mat-error>
+                La contraseña debe tener al menos 8 caracteres
+              </mat-error>
             </mat-form-field>
-            <button mat-raised-button color="primary" [disabled]="!loginForm.valid" type="submit">Login</button>
+            <!-- <button mat-raised-button color="primary" [disabled]="!loginForm.valid" type="submit">Login</button> -->
+            <button mat-raised-button color="primary" [disabled]="false" type="submit">Login</button>
           </form>
         </div>
       </nav>

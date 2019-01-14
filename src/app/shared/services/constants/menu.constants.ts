@@ -2,17 +2,14 @@ import { ROUTING } from '../constants/constants';
 
 const MENU_OPTIONS = [
   {
-    'name': 'Mi Perfil',
-    'path': ROUTING.PROFILE
-  }, {
-    'name': 'Oferta Talleres',
-    'path': ROUTING.WORKSHOPS_OFFER
-  }, {
-    'name': 'Mis Talleres',
-    'path': ROUTING.MY_WORKSHOPS
+    'name': 'HOME',
+    'path': ROUTING.HOME
   }
 ];
 
+const MENU_TITLE = "Comercialización";
+
 export {
-  MENU_OPTIONS
+  MENU_OPTIONS,
+  MENU_TITLE
 };

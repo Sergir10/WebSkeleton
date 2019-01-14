@@ -3,7 +3,7 @@ import { StorageService } from './../../services/utils/storage.service';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
-import { MENU_OPTIONS } from '../../services/constants/menu.constants';
+import { MENU_OPTIONS, MENU_TITLE } from '../../services/constants/menu.constants';
 
 @Component({
   selector: 'app-sidebar-menu',
@@ -13,6 +13,7 @@ import { MENU_OPTIONS } from '../../services/constants/menu.constants';
 
 export class SidebarMenuComponent implements OnDestroy, OnInit {
 
+  title = MENU_TITLE;
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
   public menuOptions = MENU_OPTIONS;
@@ -40,7 +41,7 @@ export class SidebarMenuComponent implements OnDestroy, OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
@@ -51,7 +52,7 @@ export class SidebarMenuComponent implements OnDestroy, OnInit {
     console.log('USER', this.storageService.getJWTClaims(token));
   }
 
-  private logout() {
+  logout() {
     this.authService.logout();
   }
 

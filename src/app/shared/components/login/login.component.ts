@@ -1,10 +1,8 @@
-import { SnackbarService } from './../../services/utils/snackbar.service';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ROUTING, HTTP_STATUS, MESSAGE } from '../../services/constants/constants';
-import { first } from 'rxjs/operators';
+import { ROUTING, HTTP_STATUS } from '../../services/constants/constants';
 
 @Component({
   selector: 'app-login',
@@ -13,14 +11,14 @@ import { first } from 'rxjs/operators';
 })
 export class LoginComponent implements OnInit {
 
-  private loginForm: FormGroup;
+  loginForm: FormGroup;
+  hide: boolean;
   private returnUrl: string;
 
   constructor(
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
-    private snackbarService: SnackbarService
   ) {
     this.validateToken();
   }
@@ -43,20 +41,18 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  private login() {
+  login() {
     const email = this.loginForm.value.email;
     const password = this.loginForm.value.password;
 
-    this.authService.login(email, password).pipe(first()).subscribe(_ => {
+    this.router.navigate([this.returnUrl]);
+
+    /* this.authService.login(email, password).pipe(first()).subscribe(_ => {
       this.router.navigate([this.returnUrl]);
     }, err => {
       if (err.status === HTTP_STATUS.FORBIDDEN) {
-        this.snackbarService.openSnackBar(MESSAGE.LOGIN_INCORRECT);
-      }
-    });
-  }
 
-  private logout() {
-    this.authService.logout();
+      }
+    }); */
   }
 }

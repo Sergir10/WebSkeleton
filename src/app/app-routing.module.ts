@@ -17,8 +17,13 @@ const routes: Routes = [
   {
     path: 'home',
     component: SidebarMenuComponent,
-    canActivate: [AuthGuard],
-    children: []
+    //canActivate: [AuthGuard],
+    children: [
+      /* {
+        path: '',
+        component: LoginComponent,
+      }, */
+    ]
   }
 ];
 
